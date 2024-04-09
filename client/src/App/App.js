@@ -9,7 +9,7 @@ import AppHeader from '../components/AppHeader/AppHeader';
 import AppFooter from '../components/AppFooter/AppFooter';
 
 // React Router page components
-import Home from '../pages/Home/Home';
+//import Home from '../pages/Home/Home';
 import Search from '../pages/Search/Search';
 import Details from '../pages/Details/Details';
 
