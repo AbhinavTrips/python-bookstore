@@ -48,10 +48,10 @@ export default function App() {
         <AppHeader />
         <BrowserRouter>
           <Routes>
-            <Route path={`/`} element={<Home />} />
+            <Route path={`/`} element={<Search />} />
             <Route path={`/search`} element={<Search />} />
             <Route path={`/details/:id`} element={<Details />}/>
-            <Route path={`*`} element={<Home />} />
+            <Route path={`*`} element={<Search />} />
           </Routes>
         </BrowserRouter>
         {<AppFooter />}
