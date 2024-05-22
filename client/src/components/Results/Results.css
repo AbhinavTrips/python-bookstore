@@ -1,6 +1,8 @@
 /* Detail Styles */
 .results-info {
     margin: 1em;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .results {

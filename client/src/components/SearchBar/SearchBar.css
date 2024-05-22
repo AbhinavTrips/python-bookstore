@@ -12,3 +12,23 @@ div.container a.input-group-btn {
 .input-group {
     flex-wrap: nowrap;
 }
+
+.stack {
+    display: 'flex';
+    flex-direction: column;
+    height: '100vh'
+}
+
+.margin {
+    margin-bottom: 10px;
+}
+
+.right-align {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  textarea#search-box {
+    overflow-y: hidden;
+    min-height: 200px;
+}

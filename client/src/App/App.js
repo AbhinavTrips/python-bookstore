@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 
 // Context for user authentication
 import { AuthContext } from '../contexts/AuthContext';
@@ -21,41 +22,42 @@ import './App.css';
 
 export default function App() {
   // React Hook: useState with a var name, set function, & default value
-  const [user, setUser] = useState({});
+  
+  const [ resultCount, setResultCount ] = useState(0);
 
-  // Fetch authentication API & set user state
-  async function fetchAuth() {
-    const response = await fetch("/.auth/me");
-    if (response) {
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.indexOf("application/json") !== -1) {
-        response.json()
-          .then(response => setUser(response))
-          .catch(error => console.error('Error:', error));
-      }
-    }
+
+
+
+  async function setAllBooksCount() {
+    axios.get( 'http://localhost:8000/get_items_count')
+        .then(response => {
+            console.log("Setting result count: "+response.data.count);
+            setResultCount(response.data.count);
+          } )
+          .catch(error => {
+              console.log(error);
+          });
   }
 
   // React Hook: useEffect when component changes
   // Empty array ensure this only runs once on mount
   useEffect(() => {
-    fetchAuth()
+    setAllBooksCount()
   }, []);
 
   return (
-    <AuthContext.Provider value={user}>
+    
       <div className="container-fluid app">
         <AppHeader />
         <BrowserRouter>
           <Routes>
-            <Route path={`/`} element={<Search />} />
-            <Route path={`/search`} element={<Search />} />
-            <Route path={`/details/:id`} element={<Details />}/>
+            <Route path={`/`} element={<Search resultCount={resultCount}/>} />
+            <Route path={`/search`} element={<Search resultCount={resultCount} />} />
+            <Route path={`/details/:id/:isbn10`} element={<Details />}/>
             <Route path={`*`} element={<Search />} />
           </Routes>
         </BrowserRouter>
         {<AppFooter />}
       </div>
-    </AuthContext.Provider>
   );
 }

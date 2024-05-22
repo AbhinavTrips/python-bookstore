@@ -12,6 +12,7 @@ export default function Pager(props) {
     }, [selectedPage, props]);
 
     function goToNextPage() {
+        console.log('Selected Page: '+selectedPage);
         setSelectedPage(selectedPage + 1);
     }
 

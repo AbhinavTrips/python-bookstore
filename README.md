@@ -2,27 +2,25 @@
 page_type: sample
 languages:
   - python
-name: Add Azure AI Search to a fullstack app (JS frontend + PY backend)
+name: Add Azure Cosmos DB with Vector Search in NoSQL API (JS frontend + PY backend)
 products:
   - azure
-  - azure-cognitive-search
+  - azure-cosmos-db
   - azure-static-web-app
 description: |
-  Add document search to a web app. This Python sample uses the Azure.Search.Documents library to create, load, and query the index.
-urlFragment: python-sample-search-web-app
+  Add vector search to a web app with the help of Azure Cosmos DB vector search feature for NoSQl API to search easily in natural language. 
+urlFragment: python-sample-cosmos-react-web-app
 ---
 
 # Add search to a web app in Python
 
 ![Flask sample MIT license badge](https://img.shields.io/badge/license-MIT-green.svg)
 
-This Python sample shows you how to add document search to a web app using Azure AI Search.
+This Python sample shows you how to use Azure Cosmos DB vector search in your web app.
 
-For this sample, you will use the [**azure-search-documents**](https://pypi.org/project/azure-search-documents/) library in the Azure SDK for Python to create, load, and query a search index containing the goodbooks-10k dataset, publicly available at [https://github.com/zygmuntz/goodbooks-10k](https://github.com/zygmuntz/goodbooks-10k). The search index runs on an [Azure AI Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) service that you create. You can use the free tier for this sample.
+For this sample, we use Azure Cosmos DB for NoSQL API to store the data about 500 books and perform read, query, and vector search operations. This app uses React for frontend and the backend is written in Python. The frontend communicates with the backend through API calls with the help of axios library. The API routes are defined using FastAPI 
 
-Optionally, this sample includes a devcontainer.json file so that you can run the code locally, as a developer, with the assurance that the environment is correctly configured and your local system doesn't need anything beyond docker. You'll need the [Docker extension](https://code.visualstudio.com/docs/containers/overview) to do this. If you don't want to us Docker, you can run your code in a virtual environment instead. 
 
-The application itself is deployed as an Azure Static web app (which you can run locally), using the JavaScript React library to build the user interface and Azure Functions to handle the query requests against the search index.
 
 This README is an shortened version of the [full Python tutorial](https://docs.microsoft.com//azure/search/tutorial-python-overview). 
 

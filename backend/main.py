@@ -8,11 +8,10 @@ from routes import router as todo_router
 
 config = dotenv_values(".env")
 app = FastAPI()
-DATABASE_NAME = "cosmosbookstore"
-BOOKS_CONTAINER = "books"
-GENRES_CONTAINER = "genres"
+DATABASE_NAME = config['BOOKS_DB']
+BOOKS_CONTAINER = config['BOOKS_CONTAINER']
 
-app.include_router(todo_router, tags=["todos"], prefix="/todos")
+app.include_router(todo_router, tags=["bookstore"], prefix="")
 origins = [
 "http://localhost:3000",
 "localhost:3000",
@@ -48,7 +47,7 @@ async def get_or_create_container(BOOKS_CONTAINER):
         return await app.books_container.read()   
     except exceptions.CosmosResourceNotFoundError:
         print("Creating container with id as partition key")
-        return await app.database.create_container(id=BOOKS_CONTAINER, partition_key=PartitionKey(path="/_id"))
+        return await app.database.create_container(id=BOOKS_CONTAINER, partition_key=PartitionKey(path="/goodreads_book_id"))
     except exceptions.CosmosHttpResponseError:
         raise
 

@@ -6,3 +6,9 @@
     width: 10em;
     height: auto;
 }
+
+.desc {
+    padding: 10px;
+    text-align: left;
+}
+
